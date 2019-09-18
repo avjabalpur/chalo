@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from "../asserts/style/style";
 
 import {
   Keyboard,
@@ -7,7 +8,7 @@ import {
   View,
   Image,
   TextInput,Button,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
   Alert, 
   KeyboardAvoidingView} from 'react-native';
 
@@ -42,79 +43,37 @@ class Login extends Component<Props> {
   render() {
     return (
       <KeyboardAvoidingView style={styles.containerView} behavior="padding">
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.loginFormView}>
-
           <View style={styles.center}>
-            <Image style={styles.logo} source={require('../asserts/logo.png')}/>
+            <Image style={styles.logo} source={require('../asserts/images/logo.png')}/>
           </View>
-          <TextInput placeholder="Username" placeholderColor="#c4c3cb" style={styles.loginFormTextInput} />
-          <TextInput placeholder="Password" placeholderColor="#c4c3cb" style={styles.loginFormTextInput} secureTextEntry={true}/>
+          <View style={styles.center}>
+            <TextInput placeholder="Username" placeholderColor="#c4c3cb" style={styles.textInput} />
+          </View>
+           <View style={styles.center}>
+            <TextInput placeholder="Password" placeholderColor="#c4c3cb" style={styles.textInput} secureTextEntry={true}/>
+          </View>
           <View>
-            <Button
-              buttonStyle={styles.button}
-              onPress={() => this.onLoginPress()}
-              title="Login"
-            />
-            <Button
-              buttonStyle={styles.button}
-              onPress={() => this.onFbLoginPress()}
-              title="Login with Facebook"
-            />
+            <View style={styles.center}>
+              <TouchableOpacity style={styles.button} onPress={this.onLoginPress}>
+                <Text style={styles.btnText}>Login</Text>
+              </TouchableOpacity>
+            </View>  
+            <View style={styles.center}>
+              <TouchableOpacity style={styles.button} onPress={this.onFbLoginPress}>
+                <Text style={styles.btnText}>Login with Facebook</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.center}>
+              <TouchableOpacity style={styles.button} onPress={this.goToRegister}>
+                <Text style={styles.btnText}>Register</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  center: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  image: {
-    height: 100,
-    width: 100
-  },
-  button: {
-    marginTop: 10,
-    marginBottom: 10,
-    width:'90%',
-    shadowOffset: { width: 10, height: 10 },
-    shadowColor: '#307BBA',
-    shadowOpacity: 1,
-    padding:10
-  },
-containerView: {
-  flex: 1,
-  backgroundColor: '#006A71',
-},
-
-logo: {
-  marginTop: 20
-},
-
-loginFormView: {
-  flex: 1
-},
-
-loginFormTextInput: {
-  height: 50,
-  fontSize: 16,
-  borderRadius: 5,
-  borderWidth: 1,
-  borderColor: '#eaeaea',
-  backgroundColor: '#fafafa',
-  paddingLeft: 10,
-  marginLeft: 15,
-  marginRight: 15,
-  marginTop: 10,
-  marginBottom: 10,
-  width:'90%'
-}
-});
 
 export default Login;

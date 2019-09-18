@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
-import { 
-  StyleSheet,View, TouchableWithoutFeedback,Text } from 'react-native';
+import styles from "../asserts/style/style";
+
+import {
+  Keyboard,
+  StyleSheet, 
+  Text,
+  View,
+  Image,
+  TextInput,Button,
+  TouchableOpacity,
+  Alert, 
+  KeyboardAvoidingView} from 'react-native';
+
 
 type Props = {};
 class Register extends Component<Props> {
@@ -22,39 +33,34 @@ class Register extends Component<Props> {
 
   render() {
     return (
-      <View style={styles.sectionContainer}>
-          <TouchableWithoutFeedback onPress={this.goToEvents}>
-            <Text style={styles.sectionTitle}>go to Events</Text>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={this.goToLogin}>
-            <Text style={styles.sectionTitle}>go to Login</Text>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={this.goToProfile}>
-            <Text style={styles.sectionTitle}>go to Profile</Text>
-          </TouchableWithoutFeedback>
+
+       <KeyboardAvoidingView style={styles.containerView} behavior="padding">
+        <View style={styles.registerFormView}>
+          
+          <View style={styles.center}>
+            <TextInput placeholder="Email" placeholderColor="#c4c3cb" style={styles.textInput} />
+          </View>
+           <View style={styles.center}>
+            <TextInput placeholder="Password" placeholderColor="#c4c3cb" style={styles.textInput} secureTextEntry={true}/>
+          </View>
+
+           <View style={styles.center}>
+            <TextInput placeholder="Retype Password" placeholderColor="#c4c3cb" style={styles.textInput} secureTextEntry={true}/>
+          </View>
+            <View style={styles.center}>
+            <TextInput placeholder="Phone" placeholderColor="#c4c3cb" style={styles.textInput} />
+          </View>
+          <View>
+            <View style={styles.center}>
+              <TouchableOpacity style={styles.button} onPress={this.goToRegister}>
+                <Text style={styles.btnText}>Register</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
+      </KeyboardAvoidingView>
     );
   }
 }
-
-
-const styles = StyleSheet.create({
-  center: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  image: {
-    height: 100,
-    width: 100
-  },
-  button: {
-    margin : 20,
-    marginTop: 20,
-    shadowOffset: { width: 10, height: 10 },
-    shadowColor: '#307BBA',
-    shadowOpacity: 1
-  }
-});
 
 export default Register;
