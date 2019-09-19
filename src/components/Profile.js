@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styles from "../asserts/style/style";
+import Header from './Header';
+import FooterNav from './FooterNav';
 
 import {
   Keyboard,
@@ -8,9 +10,11 @@ import {
   View,
   Image,
   TextInput,Button,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
   Alert, 
-  KeyboardAvoidingView} from 'react-native';
+  KeyboardAvoidingView,
+ScrollView} from 'react-native';
+
 
 type Props = {};
 class Profile extends Component<Props> {
@@ -20,34 +24,51 @@ class Profile extends Component<Props> {
     ipAddress: null
   };
 
-  goToLogin=() => {
-    this.props.navigation.navigate('Login')
-  }
-
-  goToEvents=() => {
-    this.props.navigation.navigate('Events')
-  }   
-
+onUpdateProfile = () => {
+  Alert.alert(
+      'Wait I will come soon!',
+      `Hi will be there soon!`,
+  );
+}
   render() {
- 
     return (
-     <KeyboardAvoidingView style={styles.containerView} behavior="padding">
-         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={styles.registerFormView}>
-            <TextInput placeholder="Email" placeholderColor="#c4c3cb" style={styles.textInput} />
-            <TextInput placeholder="Password" placeholderColor="#c4c3cb" style={styles.textInput} secureTextEntry={true}/>
-            <TextInput placeholder="Retype Password" placeholderColor="#c4c3cb" style={styles.textInput} secureTextEntry={true}/>
-            <TextInput placeholder="Phone" placeholderColor="#c4c3cb" style={styles.textInput} />
-            <View>
-              <Button
-                buttonStyle={styles.button}
-                onPress={() => this.onLoginPress()}
-                title="Register"
-              />
+    <View style={{flex: 1}}>
+        <Header title="Profile" />
+        <ScrollView style={styles.containerView}>
+          <KeyboardAvoidingView>
+        <View style={{flex: 1, paddingTop : 20}}>
+          
+          <View style={styles.center}>
+            <Image style={styles.profileImage} source={require('../asserts/images/logo.png')}/>
+          </View>
+
+          <View style={styles.center}>
+            <TextInput placeholder="First Name" placeholderColor="#c4c3cb" style={styles.textInput} />
+          </View>
+           <View style={styles.center}>
+            <TextInput placeholder="Last Name" placeholderColor="#c4c3cb" style={styles.textInput}/>
+          </View>
+
+           <View style={styles.center}>
+            <TextInput placeholder="Dob" placeholderColor="#c4c3cb" style={styles.textInput}/>
+          </View>
+            <View style={styles.center}>
+            <TextInput placeholder="Address" multiline = {true} numberOfLines={4} placeholderColor="#c4c3cb" style={styles.textInput} />
+          </View>
+          <View>
+            <View style={styles.center}>
+              <TouchableOpacity style={styles.button} onPress={this.onUpdateProfile}>
+                <Text style={styles.btnText}>Update</Text>
+              </TouchableOpacity>
             </View>
           </View>
-        </TouchableWithoutFeedback>
+        </View>
       </KeyboardAvoidingView>
+        </ScrollView>
+        <View>
+         <FooterNav navigation={this.props.navigation}/>
+        </View>
+      </View>
     );
   }
 }

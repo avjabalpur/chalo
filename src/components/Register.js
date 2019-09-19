@@ -52,7 +52,7 @@ class Register extends Component<Props> {
           </View>
           <View>
             <View style={styles.center}>
-              <TouchableOpacity style={styles.button} onPress={this.goToRegister}>
+              <TouchableOpacity style={styles.button} onPress={this.goToEvents}>
                 <Text style={styles.btnText}>Register</Text>
               </TouchableOpacity>
             </View>

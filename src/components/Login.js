@@ -30,7 +30,7 @@ class Login extends Component<Props> {
   }
 
   onLoginPress = () => {
-
+    this.props.navigation.navigate('Events')
   }  
 
   onFbLoginPress = () => {

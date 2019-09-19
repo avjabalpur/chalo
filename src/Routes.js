@@ -2,7 +2,6 @@ import {
   createSwitchNavigator,
   createAppContainer
 } from 'react-navigation';
-
 import { createStackNavigator } from 'react-navigation-stack';
 
 import {
@@ -14,7 +13,7 @@ import {
 } from './components';
 
 const SigninNavigator = createStackNavigator({
-  Login: {
+  /*Login: {
     screen: Login,
     navigationOptions: () => ({
       title: 'Login'
@@ -29,19 +28,19 @@ const SigninNavigator = createStackNavigator({
   Profile: {
     screen: Profile,
     navigationOptions: () => ({
-      title: 'Profile'
+      header: null,
     })
-  },
+  },*/
   Events: {
     screen: Events,
     navigationOptions: () => ({
-      title: 'Events'
-    })
+      header: null,
+    })  
   },
   EventDetails: {
     screen: EventDetails,
     navigationOptions: () => ({
-      title: 'Event Details'
+      header: null,
     })
   }
 });
