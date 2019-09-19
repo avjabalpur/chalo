@@ -13,7 +13,7 @@ import {
 } from './components';
 
 const SigninNavigator = createStackNavigator({
-  /*Login: {
+  Login: {
     screen: Login,
     navigationOptions: () => ({
       title: 'Login'
@@ -30,7 +30,7 @@ const SigninNavigator = createStackNavigator({
     navigationOptions: () => ({
       header: null,
     })
-  },*/
+  },
   Events: {
     screen: Events,
     navigationOptions: () => ({

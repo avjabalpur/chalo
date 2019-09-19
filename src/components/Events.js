@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet,View, TouchableWithoutFeedback,Text, ScrollView } from 'react-native';
+import { StyleSheet,View, TouchableOpacity,Text, ScrollView, Image, Dimensions, Alert } from 'react-native';
 import Header from './Header';
 import FooterNav from './FooterNav';
 import styles from "../asserts/style/style";
@@ -8,18 +8,21 @@ type Props = {};
 class Events extends Component<Props> {
 
   goToEventDetails=() => {
-    this.props.navigation.navigate('EventDetails')
+    Alert.alert(
+      'Wait I will come soon!',
+      `Hi will be there soon!`,
+    );
   }  
 
   render() {
     return (
       <View style={{flex: 1}}>
-        <Header title="Events" />
+        <Header title="Upcoming Event" />
         <ScrollView>
            <View>
-              <TouchableWithoutFeedback onPress={this.goToEventDetails}>
-              <Text style={styles.sectionTitle}>go to EventDetails</Text>
-              </TouchableWithoutFeedback>
+              <TouchableOpacity onPress={this.goToEventDetails}>
+                <Image style = {{height: Dimensions.get('screen').height, width : Dimensions.get('screen').width}} source={require('../asserts/images/event.png')}/>
+              </TouchableOpacity>
           </View>
         </ScrollView>
         <View>
