@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styles from "../asserts/style/style";
-
 import {
   Keyboard,
   StyleSheet, 
@@ -10,6 +9,7 @@ import {
   TextInput,Button,
   TouchableOpacity,
   Alert, 
+  StatusBar,
   KeyboardAvoidingView} from 'react-native';
 
 type Props = {};
@@ -18,7 +18,14 @@ class Header extends Component<Props> {
     const { props } = this;
 
     return (
-     <View style={styles.headerContainer}>
+      <View>
+        <StatusBar
+          translucent
+          backgroundColor="#CA5D09"
+          animated
+          barStyle="light-content"
+        />
+        <View style={styles.headerContainer}>
           <View style={styles.fBoth}>
            <View style={styles.headerTextContainer}>
               <Text style={styles.headerText} >
@@ -27,6 +34,7 @@ class Header extends Component<Props> {
             </View>
           </View>
         </View>
+      </View>  
     );
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from "../asserts/style/style";
-
+import Header from './Header';
 import {
   Keyboard,
   StyleSheet, 
@@ -33,32 +33,33 @@ class Register extends Component<Props> {
 
   render() {
     return (
-
-       <KeyboardAvoidingView style={styles.containerView} behavior="padding">
-        <View style={styles.registerFormView}>
-          
-          <View style={styles.center}>
-            <TextInput placeholder="Email" placeholderColor="#c4c3cb" style={styles.textInput} />
-          </View>
-           <View style={styles.center}>
-            <TextInput placeholder="Password" placeholderColor="#c4c3cb" style={styles.textInput} secureTextEntry={true}/>
-          </View>
-
-           <View style={styles.center}>
-            <TextInput placeholder="Retype Password" placeholderColor="#c4c3cb" style={styles.textInput} secureTextEntry={true}/>
-          </View>
+      <View style={{flex: 1}}>
+        <Header title="Register" />
+        <KeyboardAvoidingView style={styles.containerView} behavior="padding">
+          <View style={styles.registerFormView}>
             <View style={styles.center}>
-            <TextInput placeholder="Phone" placeholderColor="#c4c3cb" style={styles.textInput} />
-          </View>
-          <View>
-            <View style={styles.center}>
-              <TouchableOpacity style={styles.button} onPress={this.goToEvents}>
-                <Text style={styles.btnText}>Register</Text>
-              </TouchableOpacity>
+              <TextInput placeholder="Email" placeholderColor="#c4c3cb" style={styles.textInput} />
+            </View>
+             <View style={styles.center}>
+              <TextInput placeholder="Password" placeholderColor="#c4c3cb" style={styles.textInput} secureTextEntry={true}/>
+            </View>
+
+             <View style={styles.center}>
+              <TextInput placeholder="Retype Password" placeholderColor="#c4c3cb" style={styles.textInput} secureTextEntry={true}/>
+            </View>
+              <View style={styles.center}>
+              <TextInput placeholder="Phone" placeholderColor="#c4c3cb" style={styles.textInput} />
+            </View>
+            <View>
+              <View style={styles.center}>
+                <TouchableOpacity style={styles.button} onPress={this.goToEvents}>
+                  <Text style={styles.btnText}>Register</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-        </View>
-      </KeyboardAvoidingView>
+        </KeyboardAvoidingView>
+      </View>  
     );
   }
 }

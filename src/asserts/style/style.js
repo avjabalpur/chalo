@@ -5,6 +5,7 @@ const { StyleSheet } = React;
 export default {
 
 headerContainer: {
+  marginTop : 20,
   backgroundColor: '#CA5D09',
   height:50,
 },

@@ -19,10 +19,10 @@ class Events extends Component<Props> {
       <View style={{flex: 1}}>
         <Header title="Upcoming Event" />
         <ScrollView>
-           <View>
-              <TouchableOpacity onPress={this.goToEventDetails}>
-                <Image style = {{height: Dimensions.get('screen').height, width : Dimensions.get('screen').width}} source={require('../asserts/images/event.png')}/>
-              </TouchableOpacity>
+          <View>
+            <TouchableOpacity onPress={this.goToEventDetails}>
+              <Image style = {{height: Dimensions.get('screen').height, width : Dimensions.get('screen').width}} source={require('../asserts/images/event.png')}/>
+            </TouchableOpacity>
           </View>
         </ScrollView>
         <View>

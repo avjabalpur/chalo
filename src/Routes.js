@@ -16,13 +16,13 @@ const SigninNavigator = createStackNavigator({
   Login: {
     screen: Login,
     navigationOptions: () => ({
-      title: 'Login'
+      header: null,
     })
   },
   Register: {
     screen: Register,
     navigationOptions: () => ({
-      title: 'Register'
+      header: null,
     })
   },
   Profile: {
