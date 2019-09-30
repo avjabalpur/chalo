@@ -15,7 +15,7 @@ import {
 
 type Props = {};
 
-//import { newRegiser } from '../services/userService'
+import { newRegiser } from '../services/userService'
 
 class Register extends Component<Props> {
 
@@ -31,19 +31,19 @@ class Register extends Component<Props> {
   }
 
   handleSubmit = () => {
-     /* if (this.state.password != this.state.retypePassword) {
+      if (this.state.password != this.state.retypePassword) {
         Alert.alert(
           'Oops!',
           `password and confirm password did not match`,
         );
         return;
-      }*/
-     // newRegiser(this.state);
-    /*  Alert.alert(
+      }
+      newRegiser(this.state);
+      Alert.alert(
         'Congrets!',
         `User has created successfully, please login and enjoy the Yatra!`,
       );
-      this.props.navigation.navigate('Login')*/
+      this.props.navigation.navigate('Login')
     }
 
 

@@ -28,8 +28,8 @@ class Login extends Component<Props> {
 
   componentDidMount = () => {
 
-    console.log(firebase,'2222222222222222222222222');
-    console.log('111111111111111111111111111111111111111111111');
+    //console.log(firebase,'2222222222222222222222222');
+    /*console.log('111111111111111111111111111111111111111111111');
     let config = {
       apiKey: "AIzaSyB1rFYVBrgvh5-hRqv_xpgekkqbtrH2tBY",
       authDomain: "chalo-f4f9d.firebaseapp.com",
@@ -57,7 +57,7 @@ class Login extends Component<Props> {
         console.log('error ' , error)
     });
 
-    console.log('333333333333333333');
+    console.log('333333333333333333');*/
   }
 
 

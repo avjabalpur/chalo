@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "919247220416",
+    "firebase_url": "https://chalo-f4f9d.firebaseio.com",
+    "project_id": "chalo-f4f9d",
+    "storage_bucket": "chalo-f4f9d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919247220416:android:6a1dd7bf230fc90fcb4725",
+        "android_client_info": {
+          "package_name": "com.chalo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919247220416-1i20p6gs66mfsbokf621c0ea49ua6dfn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsZBxVNOJR7krn3oCGksuahY4tEdEuZCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919247220416-1i20p6gs66mfsbokf621c0ea49ua6dfn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "919247220416-r2l7ipofio1iinck62k3j0vn31rfp376.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bar.chalo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

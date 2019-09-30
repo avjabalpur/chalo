@@ -2,7 +2,7 @@ import {db} from '../config/firebaseconfig'
 
 export const newRegiser =  (user) => {
 	console.log('1111111111111111111111111111111111111111111111111111111111111', user, db);
-    /*db.ref('/users').set({
+    db.ref('/users').set({
         firstName: '',
 	    lastName : '',
 	    dob : '',
@@ -18,16 +18,16 @@ export const newRegiser =  (user) => {
     }).catch((error)=>{
         console.log('&&&&&&&&&&&&&&&&&&error', error);
         console.log('error ' , error)
-    })*/
+    })
 
-    db.ref('/users').set({
+   /* db.ref('/users').set({
     	name: 'amit',
     	check:'amit'
-    }).then((data)=>{
-      console.log('&&&&&&&&&&&&&&&&&&success', data);
+    }).then((data)=> {
+        console.log('&&&&&&&&&&&&&&&&&&success', data);
         console.log('data ' , data)
     }).catch((error)=>{
         console.log('&&&&&&&&&&&&&&&&&&error', error);
         console.log('error ' , error)
-    })
+    })*/
 }
