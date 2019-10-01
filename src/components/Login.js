@@ -30,11 +30,7 @@ class Login extends Component<Props> {
 
   onSuccess = (user) => {
     console.log('User logged-in success fully', user);
-    try {
-        AsyncStorage.setItem('logged-in-user', user);
-    } catch (error) {
-      // Error saving data
-    }
+    AsyncStorage.setItem('logged-in-user', JSON.stringify(user));
     this.setState({
         username: '',
         password: ''

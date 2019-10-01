@@ -14,22 +14,49 @@ import {
   Alert, 
   KeyboardAvoidingView,
 ScrollView} from 'react-native';
+import { updateUser } from '../services/userService'
 
 
-type Props = {};
 class Profile extends Component<Props> {
-  state = {
-    emailOrPhone: null,
-    password: null,
-    ipAddress: null
-  };
+  constructor (){
+    super();
+    this.state = {
+        firstName: '',
+        lastName: '',
+        dob : '',
+        address : ''
+    };
+  }
 
 onUpdateProfile = () => {
-  Alert.alert(
-      'Wait I will come soon!',
-      `Hi will be there soon!`,
-  );
+  updateUser(this.state, this.onSuccess, this.onFail)
 }
+
+onSuccess = () => {
+    Alert.alert(
+      'Congrts!',
+      `Your details has been successfully updated`,
+    );
+  }
+
+  onFail = (error) => {
+    Alert.alert(
+      'Oops!',
+      `Couldn't update your details ${error}`,
+    );
+  }
+
+
+componentDidMount (){
+    try {
+      AsyncStorage.getItem('logged-in-user', (err, result) => {
+        console.log(JSON.parse(result));
+      })
+    } catch (error) {
+      // Error retrieving data
+      }
+  }
+
   render() {
     return (
     <View style={{flex: 1}}>
@@ -43,17 +70,40 @@ onUpdateProfile = () => {
           </View>
 
           <View style={styles.center}>
-            <TextInput placeholder="First Name" placeholderColor="#c4c3cb" style={styles.textInput} />
+             <TextInput 
+                    placeholder="First Name" 
+                    placeholderColor="#c4c3cb" 
+                    style={styles.textInput} 
+                    onChangeText={(text) => this.setState({firstName: text})}/>
+
           </View>
            <View style={styles.center}>
-            <TextInput placeholder="Last Name" placeholderColor="#c4c3cb" style={styles.textInput}/>
+             <TextInput 
+                    placeholder="Last Name" 
+                    placeholderColor="#c4c3cb" 
+                    style={styles.textInput} 
+                    onChangeText={(text) => this.setState({lastName: text})}/>
+
           </View>
 
            <View style={styles.center}>
-            <TextInput placeholder="Dob" placeholderColor="#c4c3cb" style={styles.textInput}/>
+
+             <TextInput 
+                    placeholder="Dob" 
+                    placeholderColor="#c4c3cb" 
+                    style={styles.textInput} 
+                    onChangeText={(text) => this.setState({dob: text})}/>
+
           </View>
             <View style={styles.center}>
-            <TextInput placeholder="Address" multiline = {true} numberOfLines={4} placeholderColor="#c4c3cb" style={styles.textInput} />
+
+             <TextInput 
+                    placeholder="Address" 
+                    placeholderColor="#c4c3cb" 
+                    style={styles.textInput} 
+                    onChangeText={(text) => this.setState({address: text})}
+                    multiline = {true} numberOfLines={4}/>
+
           </View>
           <View>
             <View style={styles.center}>

@@ -20,15 +20,15 @@ class Events extends Component<Props> {
     );
   }
 
-   componentDidMount (){
+  componentDidMount (){
     try {
       AsyncStorage.getItem('logged-in-user', (err, result) => {
-        console.log(result);
+        console.log(JSON.parse(result));
       })
     } catch (error) {
       // Error retrieving data
       }
-    }
+  }
 
 
   render() {

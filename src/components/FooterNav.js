@@ -29,7 +29,7 @@ class FooterNav extends Component<Props> {
   onLogOutPress=() => {
     AsyncStorage.removeItem('logged-in-user', function(){
       this.redirectToAction('Login');  
-    })
+    }.bind(this))
   } 
 
   render() {

@@ -23,7 +23,6 @@ export const login =  (request, success, fail) => {
         }
        
     }).catch((error) => {
-        console.log('errorerrorerrorerrorerrorerrorerror');
         fail(error);
     })
 }
@@ -40,6 +39,26 @@ export const newRegiser =  (user, success, fail) => {
 	    phone:user.phone,
 	    isPhoneVerified : false,
 	    password : user.password
+    }).then((data)=>{
+       success(data);
+    }).catch((error)=>{
+        fail(error);
+    })
+}
+
+
+export const updateUser =  (user, success, fail) => {
+    var userRef = db.ref().child('users')
+    ref.push({
+        firstName: '',
+        lastName : '',
+        dob : '',
+        address : '',
+        email : user.email,
+        isEmailVerified : false,
+        phone:user.phone,
+        isPhoneVerified : false,
+        password : user.password
     }).then((data)=>{
        success(data);
     }).catch((error)=>{
