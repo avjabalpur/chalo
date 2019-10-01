@@ -27,25 +27,26 @@ class Register extends Component<Props> {
         phone: '',
         retypePassword : ''
     };
+  }
   
+  onSuccess = () => {
+    Alert.alert(
+      'Congrets!',
+      `User has created successfully, please login and enjoy the Yatra!`,
+    );
+    this.props.navigation.navigate('Login')
+  }
+
+  onFail = (error) => {
+    Alert.alert(
+      'Oops!',
+      `User has created successfully, please login and enjoy the Yatra! ${error}`,
+    );
   }
 
   handleSubmit = () => {
-      if (this.state.password != this.state.retypePassword) {
-        Alert.alert(
-          'Oops!',
-          `password and confirm password did not match`,
-        );
-        return;
-      }
-      newRegiser(this.state);
-      Alert.alert(
-        'Congrets!',
-        `User has created successfully, please login and enjoy the Yatra!`,
-      );
-      this.props.navigation.navigate('Login')
-    }
-
+    newRegiser(this.state, this.onSuccess, this.onFail)
+  } 
 
   render() {
     return (

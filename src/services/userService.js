@@ -1,8 +1,36 @@
 import {db} from '../config/firebaseconfig'
+import _ from 'lodash'
 
-export const newRegiser =  (user) => {
-	console.log('1111111111111111111111111111111111111111111111111111111111111', user, db);
-    db.ref('/users').set({
+const ref = db.ref().child('users');
+
+export const login =  (request, success, fail) => {
+
+    ref.once('value').then(snapshot => {
+        let users = [];
+        snapshot.forEach((item) => {
+          users.push(item.val());
+        });
+        if (users.length > 0) {
+          let loggedUser =  _.find(users, function(o) { 
+                return (o.email == request.username && o.password == request.password); 
+            })
+            if (loggedUser) {
+                success(loggedUser);
+            }
+            else {
+               fail('Invalid username and password');  
+            }
+        }
+       
+    }).catch((error) => {
+        console.log('errorerrorerrorerrorerrorerrorerror');
+        fail(error);
+    })
+}
+
+
+export const newRegiser =  (user, success, fail) => {
+    ref.push({
         firstName: '',
 	    lastName : '',
 	    dob : '',
@@ -13,21 +41,8 @@ export const newRegiser =  (user) => {
 	    isPhoneVerified : false,
 	    password : user.password
     }).then((data)=>{
-      console.log('&&&&&&&&&&&&&&&&&&success', data);
-        console.log('data ' , data)
+       success(data);
     }).catch((error)=>{
-        console.log('&&&&&&&&&&&&&&&&&&error', error);
-        console.log('error ' , error)
+        fail(error);
     })
-
-   /* db.ref('/users').set({
-    	name: 'amit',
-    	check:'amit'
-    }).then((data)=> {
-        console.log('&&&&&&&&&&&&&&&&&&success', data);
-        console.log('data ' , data)
-    }).catch((error)=>{
-        console.log('&&&&&&&&&&&&&&&&&&error', error);
-        console.log('error ' , error)
-    })*/
 }

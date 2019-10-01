@@ -13,59 +13,48 @@ import {
   TextInput,Button,
   TouchableOpacity,
   Alert, 
-  KeyboardAvoidingView} from 'react-native';
+  KeyboardAvoidingView,
+  AsyncStorage
+} from 'react-native';
+import { login } from '../services/userService'
 
 class Login extends Component<Props> {
 
-  state = {
-    userName: null,
-    password: null
-  };
+  constructor (){
+    super();
+    this.state = {
+        username: '',
+        password: ''
+    };
+  } 
+
+  onSuccess = (user) => {
+    console.log('User logged-in success fully', user);
+    try {
+        AsyncStorage.setItem('logged-in-user', user);
+    } catch (error) {
+      // Error saving data
+    }
+    this.setState({
+        username: '',
+        password: ''
+    })
+    this.props.navigation.navigate('Events')
+  }
+
+  onFail = (error) => {
+    Alert.alert(
+      'Oops!',
+      `Unable to login please check and try again! ${error}`,
+    );
+  }
 
   goToRegister=() => {
     this.props.navigation.navigate('Register')
   }
 
-  componentDidMount = () => {
-
-    //console.log(firebase,'2222222222222222222222222');
-    /*console.log('111111111111111111111111111111111111111111111');
-    let config = {
-      apiKey: "AIzaSyB1rFYVBrgvh5-hRqv_xpgekkqbtrH2tBY",
-      authDomain: "chalo-f4f9d.firebaseapp.com",
-      databaseURL: "https://chalo-f4f9d.firebaseio.com",
-      projectId: "chalo-f4f9d",
-      storageBucket: "",
-      messagingSenderId: "919247220416",
-      appId: "1:919247220416:web:13c77ee4ecce932acb4725",
-      measurementId: "G-KSQ50058C3"
-  };
-
-  firebase.initializeApp(config);
-
-  console.log('2222222222222222222222222');
-
-
-  firebase.database().ref().child('users').push({
-    name: 'amit',
-    check:'amit'
-  }).then((data)=>{
-        console.log('&&&&&&&&&&&&&&&&&&success', data);
-        console.log('data ' , data)
-    }).catch((error)=>{
-        console.log('&&&&&&&&&&&&&&&&&&error', error1);
-        console.log('error ' , error)
-    });
-
-    console.log('333333333333333333');*/
-  }
-
-
-
-
   onLoginPress = () => {
-    //console.log(this.state, 'state')
-    this.props.navigation.navigate('Events')
+    login(this.state, this.onSuccess, this.onFail)
   }  
 
   onFbLoginPress = () => {
@@ -90,24 +79,19 @@ class Login extends Component<Props> {
               <Image style={styles.logo} source={require('../asserts/images/logo.png')}/>
             </View>
             <View style={styles.center}>
-              <TextInput placeholder="Username" placeholderColor="#c4c3cb" style={styles.textInput}
-              onChangeText={userName =>
-                this.setState({
-                  userName
-                })
-              } 
-              value={this.state.userName}/>
+               <TextInput 
+                  placeholder="Username" 
+                  placeholderColor="#c4c3cb" 
+                  style={styles.textInput}
+                  onChangeText={(text) => this.setState({username: text})}/>
             </View>
-             <View style={styles.center}>
-              <TextInput placeholder="Password" placeholderColor="#c4c3cb" style={styles.textInput} 
-              secureTextEntry={true} 
-              onChangeText={password =>
-                this.setState({
-                  password
-                })
-              }
-              value={this.state.password}
-              />
+            <View style={styles.center}>
+              <TextInput 
+                    placeholder="Password" 
+                    placeholderColor="#c4c3cb" 
+                    style={styles.textInput} 
+                    secureTextEntry={true}
+                    onChangeText={(text) => this.setState({password: text})}/>  
             </View>
             <View>
               <View style={styles.center}>

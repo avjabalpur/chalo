@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet,View, TouchableOpacity,Text, ScrollView, Image, Dimensions, Alert } from 'react-native';
+import { StyleSheet,View, 
+  TouchableOpacity,
+  Text, 
+  ScrollView, 
+  Image, 
+  Dimensions, 
+  Alert,
+  AsyncStorage } from 'react-native';
 import Header from './Header';
 import FooterNav from './FooterNav';
 import styles from "../asserts/style/style";
 
-type Props = {};
 class Events extends Component<Props> {
 
   goToEventDetails=() => {
@@ -12,7 +18,18 @@ class Events extends Component<Props> {
       'Wait I will come soon!',
       `Hi will be there soon!`,
     );
-  }  
+  }
+
+   componentDidMount (){
+    try {
+      AsyncStorage.getItem('logged-in-user', (err, result) => {
+        console.log(result);
+      })
+    } catch (error) {
+      // Error retrieving data
+      }
+    }
+
 
   render() {
     return (

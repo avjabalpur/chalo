@@ -6,7 +6,9 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Alert} from 'react-native';
+  Alert,
+  AsyncStorage
+  } from 'react-native';
 
 type Props = {};
 class FooterNav extends Component<Props> {
@@ -25,7 +27,9 @@ class FooterNav extends Component<Props> {
   } 
 
   onLogOutPress=() => {
-    this.redirectToAction('Login');
+    AsyncStorage.removeItem('logged-in-user', function(){
+      this.redirectToAction('Login');  
+    })
   } 
 
   render() {
